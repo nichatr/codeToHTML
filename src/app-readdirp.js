@@ -26,17 +26,12 @@ function readAllFiles() {
       console.log("Error: ", err);
     })
     .on('end', function () {
+      // console.log(allFilePaths);
       return allFilePaths;
     });
 }
 
-var files;
-
-try {
-  files = readAllFiles();
-
-} catch (error) {
-  console.log(error);
-}
-
-console.log(files);
+var aaa = new Promise((resolve, reject) => {
+  resolve(readAllFiles());
+});
+console.log(aaa);

@@ -17,6 +17,7 @@
     "klaw": "^3.0.0",
     "klaw-sync": "^6.0.0",
     "lodash": "^4.17.11",
-    "readdirp": "^2.2.1"
+    "readdirp": "^2.2.1",
+    "readdirp-walk": "^1.6.0"
   }
 }

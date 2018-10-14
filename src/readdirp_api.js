@@ -7,10 +7,9 @@ var settings = {
     directoryFilter: ['!.git', '!*modules'],
 };
 
-function readAllFiles() {
+var allFilePaths = [];
 
-    // In this example, this variable will store all the paths of the files and directories inside the providen path
-    var allFilePaths = [];
+function readAllFiles() {
 
     // Iterate recursively through a folder
     readdirp(settings)
@@ -31,8 +30,8 @@ function readAllFiles() {
             console.log("Error: ", err);
         })
         .on('end', function () {
-            // console.log(allFilePaths);
-            return allFilePaths;
+            console.log(allFilePaths);
+            // return allFilePaths;
         });
 }
 
