@@ -1,15 +1,41 @@
+const getFile = require('./getFile');
 const klawSync = require('klaw-sync');
+const path = require('path');
 const _ = require('lodash');
 
-// var settings = {
-//   root: './',          // './your-folder-path',
-//   entryType: 'all',
-//   fileFilter: ['!*.json', '!*.', '!TODO.', '!*.md'],
-//   directoryFilter: ['!.git', '!*modules'],
-// };
+// get in object all files, exclude directories.
+const files = klawSync('./', { nodir: true });
 
-const files = klawSync('./', {nodir: true});
+_.forEach(files, function (value, key) {
+    var workPath = path.parse(value.path).dir;
+    var workFile = path.parse(value.path).base;
 
-_.forEach(files, function(value,key) {
-  console.log(value.path);
+    //  remove the path up to the current working directory.
+    var newPath = workPath.replace(__dirname, "");
+
+    // add a new property to the object <files> with the file name.
+    // if file in sub-directory add "./sub-directory" to filename.
+    if (newPath) {
+        value.filename = `${newPath}\\${workFile}`;
+    } else {
+        value.filename = workFile;
+    }
 });
+
+_.forEach(files, function (value, key) {
+    console.log(value.filename);
+});
+
+
+
+
+// var filename = 'basics.html';
+// console.log(getFile(filename));
+
+// function processOneFile(filename) {
+//     var files = readdirp_api.readDirp();
+//     // var oneFile = getFile(filename);
+
+//     console.log(files);
+
+// }

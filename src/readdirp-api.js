@@ -7,15 +7,13 @@ var settings = {
     directoryFilter: ['!.git', '!*modules'],
 };
 
-var allFilePaths = [];
-
-function readAllFiles() {
+function readAllFilesAPI(myCallback) {
+    var allFilePaths = [];
 
     // Iterate recursively through a folder
     readdirp(settings)
+        // execute everytime a file is found in the providen directory
         .on('data', function (entry) {
-            // execute everytime a file is found in the providen directory
-
             // Store the fullPath of the file/directory in our custom array
             if (!entry.stat.isDirectory()) {
                 allFilePaths.push(
@@ -30,9 +28,8 @@ function readAllFiles() {
             console.log("Error: ", err);
         })
         .on('end', function () {
-            console.log(allFilePaths);
-            // return allFilePaths;
+            myCallback(allFilePaths);
         });
 }
 
-module.exports = readAllFiles;
+module.exports = readAllFilesAPI;

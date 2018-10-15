@@ -8,7 +8,7 @@ var settings = {
     directoryFilter: ['!*.*', '!.git', '!*modules'],
 };
 
-function readAllFiles() {
+function readAllFilesCallback(myCallback) {
     // In this example, this variable will store all the paths of the files and directories inside the providen path
     var allFilePaths = [];
 
@@ -16,7 +16,6 @@ function readAllFiles() {
     readdirp(settings,
         // This callback is executed everytime a file or directory is found inside the providen path
         function (entry) {
-
             // Store the fullPath of the file/directory in our custom array 
             if (!entry.stat.isDirectory()) {
                 allFilePaths.push(
@@ -32,12 +31,9 @@ function readAllFiles() {
             }
 
             // An array with all the fileEntry objects of the folder 
-            // console.log(res);
-            console.log(allFilePaths);
-            return allFilePaths;
-            // ["c:/file.txt",""]
+            myCallback(allFilePaths);
         }
     );
 }
 
-module.exports = readAllFiles;
+module.exports = readAllFilesCallback;

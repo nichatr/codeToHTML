@@ -10,8 +10,8 @@ function processOneFile()
     remarks:
     path = the relative path of the app being converted.
     e.g.
-    /app.js
-    /views/index.html
+    app.js
+    views/index.html
     ...
 
 function main()
