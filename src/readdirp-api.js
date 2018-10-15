@@ -1,6 +1,5 @@
 'use strict';
 const readdirp = require('readdirp');
-const { settingsHTML } = require("./settingsHTML");
 
 var settings = {
     root: './',          // './your-folder-path',
@@ -9,9 +8,9 @@ var settings = {
     directoryFilter: ['!.git', '!*modules'],
 };
 
-function readAllFilesAPI(myCallback) {
+function readAllFilesAPI(myCallback, root) {
     var allFilePaths = [];
-    settings.root = settingsHTML.root;
+    settings.root = root;
 
     // Iterate recursively through a folder
     readdirp(settings)

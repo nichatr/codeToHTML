@@ -1,6 +1,6 @@
 
 Todo:
-  ☐ readAllFilesAPI(): add param= settings = {root:...,filename decoration, output filename}
-  ☐ processFiles(): add the above param.
+  ✔ readAllFilesAPI(): add param= settings = {root:...,filename decoration, output filename} @done(18-10-15 22:43)
+  ☐ processFiles(): add the above param. @started(18-10-15 22:43)
   ☐ add table of contents
   ☐ make all the app into web app
