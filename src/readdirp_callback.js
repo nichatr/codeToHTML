@@ -1,5 +1,4 @@
 'use strict';
-// Import the module
 var readdirp = require('readdirp');
 
 var settings = {

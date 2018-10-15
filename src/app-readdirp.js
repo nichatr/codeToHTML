@@ -7,31 +7,34 @@ var settings = {
   directoryFilter: ['!.git', '!*modules'],
 };
 
-function readAllFiles() {
-  var allFilePaths = [];
+function readAllFiles(myCallback) {
+    // In this example, this variable will store all the paths of the files and directories inside the providen path
+    var allFilePaths = [];
 
-  // Iterate recursively through a folder
-  readdirp(settings)
-    .on('data', function (entry) {
-      if (!entry.stat.isDirectory()) {
-        allFilePaths.push(
-          entry.path //+ "---" + entry.stat.isDirectory()
-        );
-      }
-    })
-    .on('warn', function (warn) {
-      console.log("Warn: ", warn);
-    })
-    .on('error', function (err) {
-      console.log("Error: ", err);
-    })
-    .on('end', function () {
-      // console.log(allFilePaths);
-      return allFilePaths;
-    });
+    // Iterate recursively through a folder
+    readdirp(settings,
+        // This callback is executed everytime a file or directory is found inside the providen path
+        function (entry) {
+
+            // Store the fullPath of the file/directory in our custom array 
+            if (!entry.stat.isDirectory()) {
+                allFilePaths.push(
+                    entry.path //+ "---" + entry.stat.isDirectory()
+                );
+            }
+        },
+
+        // This callback is executed once 
+        function (err, res) {
+            if (err) {
+                throw err;
+            }
+
+            // An array with all the fileEntry objects of the folder 
+            // console.log(allFilePaths);
+            myCallback(allFilePaths);
+        }
+    );
 }
 
-var aaa = new Promise((resolve, reject) => {
-  resolve(readAllFiles());
-});
-console.log(aaa);
+readAllFiles(console.log);
