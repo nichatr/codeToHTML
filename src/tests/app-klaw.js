@@ -1,4 +1,4 @@
-const getFile = require('./getFile');
+const getFile = require('../getFile');
 const klawSync = require('klaw-sync');
 const path = require('path');
 const _ = require('lodash');
@@ -29,13 +29,3 @@ _.forEach(files, function (value, key) {
 
 
 
-// var filename = 'basics.html';
-// console.log(getFile(filename));
-
-// function processOneFile(filename) {
-//     var files = readdirp_api.readDirp();
-//     // var oneFile = getFile(filename);
-
-//     console.log(files);
-
-// }
