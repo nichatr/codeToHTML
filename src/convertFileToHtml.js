@@ -1,23 +1,27 @@
+'use strict';
 var fs = require('fs');
-var _ = require('lodash');  // Load the full build.
+var _ = require('lodash');
+
+const { settingsHTML } = require("./settingsHTML");
 
 /**
  * @param {string} filename the file (including path) to process
  * @returns {contents} parsed file contents
  * */
-function getFile(filename) {
+function convertFileToHtml(filename) {
     const openingCode = "<pre><code class=";
     const postfix = "</code></pre>";
-    var extension;
-    var prefix;
-    var convertedData;
-    var language;
-    var languages = {
-        js: "language-javascript",
-        html: "language-html",
-        css: "language-css",
-        other: "language-javascript"
-    };
+    var extension,
+        prefix,
+        fileTitle,
+        convertedData,
+        language,
+        languages = {
+            js: "language-javascript",
+            html: "language-html",
+            css: "language-css",
+            other: "language-javascript"
+        };
 
     // '<pre><code class="language-javascript">'
 
@@ -32,11 +36,13 @@ function getFile(filename) {
         convertedData = data;
     }
 
+    fileTitle = `${settingsHTML.titleDecorationOpen}${filename}${settingsHTML.titleDecorationClose}`;
     language = languages[extension] ? languages[extension] : languages.other;
     prefix = `${openingCode}"${language}">`;
-    convertedData = prefix + convertedData + postfix;
+
+    convertedData = fileTitle + prefix + convertedData + postfix;
 
     return convertedData;
 }
 
-module.exports = getFile;
+module.exports = convertFileToHtml;

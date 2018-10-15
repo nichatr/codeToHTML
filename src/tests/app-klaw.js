@@ -1,4 +1,4 @@
-const getFile = require('../getFile');
+const getFile = require('../convertFileToHtml');
 const klawSync = require('klaw-sync');
 const path = require('path');
 const _ = require('lodash');

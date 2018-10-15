@@ -1,5 +1,6 @@
 
 Todo:
-  ☐ function getFile(filename)
-  ☐ function getFile(filename)
-
+  ☐ readAllFilesAPI(): add param= settings = {root:...,filename decoration, output filename}
+  ☐ processFiles(): add the above param.
+  ☐ add table of contents
+  ☐ make all the app into web app
