@@ -19,7 +19,7 @@ function readAllFilesCallback(myCallback) {
             // Store the fullPath of the file/directory in our custom array 
             if (!entry.stat.isDirectory()) {
                 allFilePaths.push(
-                    entry.path //+ "---" + entry.stat.isDirectory()
+                    entry.path
                 );
             }
         },

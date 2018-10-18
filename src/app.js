@@ -1,7 +1,7 @@
 'use strict';
 
 // const readAllFilesCallback = require('./readdirp-callback');
-const readAllFilesAPI = require('./readdirp-api');
+const readAllFilesAPI = require('./readdirp-stream');
 const processFiles = require('./processFiles');
 const { settingsHTML } = require("./settingsHTML");
 

@@ -5,7 +5,7 @@ const { settingsHTML } = require("./settingsHTML");
 // var filename = 'basics.html';
 // console.log(getFile(filename));
 
-function processFiles(files, settings) {
+function processFiles(files) {
     var allFiles;
     files.forEach(file => {
         allFiles += convertFileToHtml(file);

@@ -1,7 +1,7 @@
 'use strict';
 const readdirp = require('readdirp');
 
-var settings = {
+var settingsAPI = {
     root: './',          // './your-folder-path',
     entryType: 'all',
     fileFilter: ['!*.json', '!*.', '!TODO.', '!*.md'],
@@ -10,16 +10,16 @@ var settings = {
 
 function readAllFilesAPI(myCallback, root) {
     var allFilePaths = [];
-    settings.root = root;
+    settingsAPI.root = root;
 
     // Iterate recursively through a folder
-    readdirp(settings)
+    readdirp(settingsAPI)
         // execute everytime a file is found in the providen directory
         .on('data', function (entry) {
             // Store the fullPath of the file/directory in our custom array
             if (!entry.stat.isDirectory()) {
                 allFilePaths.push(
-                    entry.path //+ "---" + entry.stat.isDirectory()
+                    entry.path
                 );
             }
         })
