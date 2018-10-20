@@ -8,6 +8,10 @@ var settingsAPI = {
     directoryFilter: ['!.git', '!*modules'],
 };
 
+/**
+ * @param {string} callback function to call after finishing.
+ * @param {string} root file path to begin with.
+ * */
 function readAllFilesAPI(myCallback, root) {
     var allFilePaths = [];
     settingsAPI.root = root;

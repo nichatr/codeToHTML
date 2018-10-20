@@ -4,6 +4,10 @@ const fs = require('fs');
 const convertFileToHtml = require('./convertFileToHtml');
 const { settingsHTML } = require("./settingsHTML");
 
+/**
+ * process all files.
+ * @param {array} files array of filepaths under the root.
+ * */
 function processFiles(files) {
     if (files.length === 0) return;
 
@@ -21,6 +25,7 @@ function processFiles(files) {
     writeFooter();
 }
 
+/* write the html header */
 function writeHeader() {
     let header = fs.readFileSync('header.html', 'utf8');
 
@@ -31,6 +36,7 @@ function writeHeader() {
     fs.writeFileSync(filepath, header, { encoding: 'utf8', flag: 'w' });
 }
 
+/* write the html footer */
 function writeFooter() {
     let footer = fs.readFileSync('footer.html', 'utf8');
     let filepath = __dirname + '\\' + `${settingsHTML.outputFilename}`;
