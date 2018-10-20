@@ -7,37 +7,34 @@ const { settingsHTML } = require("./settingsHTML");
 function processFiles(files) {
     if (files.length === 0) return;
 
-    if (writeHeader() === false) return;
+    writeHeader();
 
-    files.forEach(file => {
-        let fileText = convertFileToHtml(file);
-        fs.writeFile(__dirname + `/${settingsHTML.outputFilename}`, fileText, { flag: 'a' }, (err) => {
-            if (err) throw err;
-        });
+    files.forEach((file) => {
+        // ignore the output file.
+        if (file !== settingsHTML.outputFilename) {
+            let fileText = convertFileToHtml(file);
+            let filepath = __dirname + '\\' + `${settingsHTML.outputFilename}`;
+            fs.writeFileSync(filepath, fileText, { encoding: 'utf8', flag: 'a' });
+        }
     });
 
     writeFooter();
 }
 
 function writeHeader() {
-    fs.readFile('header.html', (err, header) => {
-        if (err) return false;
-        let strHeader = header.toString('utf8').replace('TITLE-APP', settingsHTML.outputFilename);
-        header = Buffer.from(strHeader, 'utf8');
-        fs.writeFile(__dirname + `/${settingsHTML.outputFilename}`, header, { flag: 'w' }, (err) => {
-            if (err) return false;
-            return true;
-        });
-    });
+    let header = fs.readFileSync('header.html', 'utf8');
+
+    // let strHeader = header.toString('utf8').replace('TITLE-APP', settingsHTML.outputFilename);
+    // header = Buffer.from(strHeader, 'utf8');
+    header.replace('TITLE-APP', settingsHTML.outputFilename);
+    let filepath = __dirname + '\\' + `${settingsHTML.outputFilename}`;
+    fs.writeFileSync(filepath, header, { encoding: 'utf8', flag: 'w' });
 }
 
 function writeFooter() {
-    fs.readFile('footer.html', (err, footer) => {
-        if (err) return false;
-        fs.writeFile(__dirname + `/${settingsHTML.outputFilename}`, footer, { flag: 'a' }, (err) => {
-            if (err) throw err;
-        });
-    });
+    let footer = fs.readFileSync('footer.html', 'utf8');
+    let filepath = __dirname + '\\' + `${settingsHTML.outputFilename}`;
+    fs.writeFileSync(filepath, footer, { encoding: 'utf8', flag: 'a' });
 }
 
 module.exports = processFiles;
