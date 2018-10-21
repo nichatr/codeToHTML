@@ -38,3 +38,12 @@ function main()
         \reducers\reducer2.js
         \tests\index.mjs
         \tests\lib.mjs
+
+#H2 Embed bootstrap dropdown contents with links
+1. read all pathnames and create the contents bootstrap dropdown in header.
+2. write header.
+3. read again all pathnames and process each.
+    1. in title add id="filename".
+    2. after title add a link "top".
+
+1. get app title from new setting.

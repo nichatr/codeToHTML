@@ -15,7 +15,7 @@ function processFiles(files) {
 
     files.forEach((file) => {
         // ignore the output file.
-        if (file !== settingsHTML.outputFilename) {
+        if (file !== settingsHTML.appTitle) {
             let fileText = convertFileToHtml(file);
             let filepath = __dirname + '\\' + `${settingsHTML.outputFilename}`;
             fs.writeFileSync(filepath, fileText, { encoding: 'utf8', flag: 'a' });
@@ -31,7 +31,7 @@ function writeHeader() {
 
     // let strHeader = header.toString('utf8').replace('TITLE-APP', settingsHTML.outputFilename);
     // header = Buffer.from(strHeader, 'utf8');
-    header.replace('TITLE-APP', settingsHTML.outputFilename);
+    header = header.replace('TITLE-APP', settingsHTML.appTitle);
     let filepath = __dirname + '\\' + `${settingsHTML.outputFilename}`;
     fs.writeFileSync(filepath, header, { encoding: 'utf8', flag: 'w' });
 }

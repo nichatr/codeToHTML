@@ -4,6 +4,7 @@ var settingsHTML = {
     outputFilename: 'output.html',
     titleDecorationOpen: '<h1>',
     titleDecorationClose: '</h1>',
-    createTableOfContents: false
+    createTableOfContents: false,
+    appTitle: 'created by codeToHTML'
 };
 exports.settingsHTML = settingsHTML;
