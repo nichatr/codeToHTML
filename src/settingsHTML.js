@@ -1,7 +1,8 @@
 // TODO: these settings to be incorporated to some sort of file?
 var settingsHTML = {
-    root: './',
-    outputFilename: 'output.html',
+    // root: './',
+    root: 'D:\\_files\\nic\\development\\web development\\web developer bootcamp-udemy\\yelp-camp-nic',
+    outputFilename: 'yelpCamp.html',
     titleDecorationOpen: '<h1>',
     titleDecorationClose: '</h1>',
     createTableOfContents: false,

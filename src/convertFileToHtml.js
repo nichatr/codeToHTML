@@ -15,6 +15,7 @@ function convertFileToHtml(filename) {
         prefix,
         convertedData,
         language,
+        data,
         languages = {
             js: "language-javascript",
             html: "language-html",
@@ -22,7 +23,12 @@ function convertFileToHtml(filename) {
             other: "language-javascript"
         };
 
-    var data = fs.readFileSync(filename, 'utf8')
+    try {
+        data = fs.readFileSync(filename, 'utf8');
+    } catch (error) {
+        data = 'File not found.';
+    }
+
     extension = filename.split('.').pop();
 
     if (extension === 'html' ||
