@@ -41,9 +41,14 @@ function main()
 
 #H2 Embed bootstrap dropdown contents with links
 1. read all pathnames and create the contents bootstrap dropdown in header.
-2. write header.
-3. read again all pathnames and process each.
-    1. in title add id="filename".
-    2. after title add a link "top".
+    1. read header1.html into header var.
+    2. for each pathname:
+        1. create dropdown-item
+        2. add to header var.
+    3. read header2.html and add to header var.
 
-1. get app title from new setting.
+2. write header.
+
+3. read again all pathnames and process each.
+    1. read header2.html once to get the template.
+    2. replace id and value with filename.

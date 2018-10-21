@@ -13,7 +13,6 @@ function convertFileToHtml(filename) {
     const postfix = "</code></pre>";
     var extension,
         prefix,
-        fileTitle,
         convertedData,
         language,
         languages = {
@@ -22,8 +21,6 @@ function convertFileToHtml(filename) {
             css: "language-css",
             other: "language-javascript"
         };
-
-    // '<pre><code class="language-javascript">'
 
     var data = fs.readFileSync(filename, 'utf8')
     extension = filename.split('.').pop();
@@ -36,11 +33,9 @@ function convertFileToHtml(filename) {
         convertedData = data;
     }
 
-    fileTitle = `${settingsHTML.titleDecorationOpen}${filename}${settingsHTML.titleDecorationClose}`;
     language = languages[extension] ? languages[extension] : languages.other;
     prefix = `${openingCode}"${language}">`;
-
-    convertedData = fileTitle + prefix + convertedData + postfix;
+    convertedData = prefix + convertedData + postfix;
 
     return convertedData;
 }
