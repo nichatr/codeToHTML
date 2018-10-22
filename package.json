@@ -12,7 +12,10 @@
   "description": "",
   "devDependencies": {},
   "dependencies": {
+    "body-parser": "^1.18.3",
+    "ejs": "^2.6.1",
     "expand-range": "^2.0.1",
+    "express": "^4.16.4",
     "fs": "0.0.1-security",
     "klaw": "^3.0.0",
     "klaw-sync": "^6.0.0",

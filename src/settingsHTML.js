@@ -2,7 +2,7 @@
 var settingsHTML = {
     // root: './',
     root: 'D:\\_files\\nic\\development\\web development\\web developer bootcamp-udemy\\yelp-camp-nic',
-    outputFilename: 'yelpCamp.html',
+    outputFilename: 'yelpCamp_nic.html',
     titleDecorationOpen: '<h1>',
     titleDecorationClose: '</h1>',
     createTableOfContents: false,

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>codeToHTML</title>
+    <link href="prism.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" 
+        crossorigin="anonymous">
+    <style>
+        h4 { padding-top: 10px; };
+        .jumbotron { padding-top: 0px;  };
+    </style>
+    <meta charset="utf-8" />
+</head>
+
+<body>
+    <div class="container">
+        <div class="dropdown show">
+            <a class="btn btn-primary dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Contents
+            </a>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+<a class="dropdown-item" href="#app-http.js">app-http.js</a>
+<a class="dropdown-item" href="#app-request.js">app-request.js</a></div>
+</div>
+
+</div>
+<div class="container">
+<a class="btn btn-light" href="#" role="button">
+    <h4 id="app-http.js">app-http.js</h4>
+</a><pre><code class="language-javascript">const https = require(&#39;https&#39;);
+
+https.get(&#39;https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY&#39;, (resp) =&gt; {
+  let data = &#39;&#39;;
+
+  // A chunk of data has been recieved.
+  resp.on(&#39;data&#39;, (chunk) =&gt; {
+    data += chunk;
+  });
+
+  // The whole response has been received. Print out the result.
+  resp.on(&#39;end&#39;, () =&gt; {
+    // console.log(JSON.parse(data).explanation);
+    console.log(data);
+  });
+
+}).on(&quot;error&quot;, (err) =&gt; {
+  console.log(&quot;Error: &quot; + err.message);
+});</code></pre><a class="btn btn-light" href="#" role="button">
+    <h4 id="app-request.js">app-request.js</h4>
+</a><pre><code class="language-javascript">const request = require(&#39;request&#39;);
+const urlNASA = &#39;https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY&#39;;
+
+request(urlNASA, { json: true }, (err, res, body) =&gt; {
+    if (err) { return console.log(err); }
+    console.log(body.url);
+    console.log(body.explanation);
+});</code></pre></div>
+<script src="prism.js" type="text/javascript"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+    crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>
