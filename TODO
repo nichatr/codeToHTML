@@ -3,9 +3,13 @@ Todo:
   ✔ readAllFilesAPI(): add param= settings = {root:...,filename decoration, output filename} @done(18-10-15 22:43)
   ✔ processFiles(): add the above param. @started(18-10-15 22:43) @done(18-10-20 10:14) @lasted(4d11h31m28s)
   ✔ add table of contents @done(18-10-21 13:16)
-  ☐ make all the app into web app @started(18-10-21 20:32)
-  ☐ error handling in read/write files
-  ☐ make i/o files async.
-  ☐ refactor: create dirs for js, ejs, html, css
+  ✔ make all the app into web app @started(18-10-21 20:32) @done(18-10-23 06:22) @lasted(1d9h50m58s)
+
+  ☐ add input validation.
+  ☐ send message "created" from node.js.
+  ☐ error handling in read/write files --> send them back to user.
+  ✔ make i/o files async. @done(18-10-23 22:15)
+  
+  ☐ refactor? create dirs for js, ejs, html, css
   
   ☐ use JSDoc

@@ -22,9 +22,7 @@ function readAllFilesAPI(myCallback, root) {
         .on('data', function (entry) {
             // Store the fullPath of the file/directory in our custom array
             if (!entry.stat.isDirectory()) {
-                allFilePaths.push(
-                    entry.path
-                );
+                allFilePaths.push(entry.path);
             }
         })
         .on('warn', function (warn) {
